@@ -11,7 +11,7 @@ import CoreLocation
 
 class LocationManager {
   
-  var city: String = "Pittsburgh"
+  var city: String = "Wherever"
   var latitude: String = "0.00"
   var longitude: String = "0.00"
   var locationManager = CLLocationManager()
