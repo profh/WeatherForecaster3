@@ -7,18 +7,42 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ViewController: UIViewController {
+var temp: Float?
+var city: String?
+var icon: String?
+
+class ViewController: UIViewController, CLLocationManagerDelegate {
+  
+  @IBOutlet weak var cityLabel: UILabel!
+  @IBOutlet weak var tempLabel: UILabel!
+  var forecast = Forecast()
+  
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
+    println("forecast: \(forecast.city)")
+    forecast.city = ""
+    cityLabel.text = "\(forecast.city!)"
+    
+    if forecast.status {
+      cityLabel.text = "\(forecast.city!)"
+      tempLabel.text = "\(forecast.convertFromKelvinToFahrenheit())"
+    } else {
+      sleep(1)
+      cityLabel.text = "\(forecast.city!)"
+      tempLabel.text = "\(forecast.convertFromKelvinToFahrenheit())"
+    }
+    
   }
 
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
+  
+  
 
 
 }
